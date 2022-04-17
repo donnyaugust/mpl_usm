@@ -186,18 +186,19 @@ class Admin extends Controller {
         $this -> view('admin/blog/insert');
         $this -> view('admin/temp/foot');
     }
+
     public function insBlog() 
     {
-        if( $this -> model('Admin_model') -> insertBlg() == false ) {
-            Flasher::setFlash('FAILED', 'INSERT', 'danger');
-            header('Location: ' . BASEURL . 'Admin/blog');
+        $id = $this -> model('Admin_model') -> insertBlgId();
+
+        if( $this -> model('Admin_model') -> insertBlg() > 0 ) {
+            Flasher::setFlash('SUCCESS', 'DATA UPDATE', 'danger');
+            header('Location: ' . BASEURL . 'Admin/detailBlog/' . $id);
             exit;
         } else {
-            $id = $this -> model('Admin_model') -> insertBlg();
-            Flasher::setFlash('SUCCESS', 'INSERT', 'danger');
-            header('Location: ' . BASEURL . 'Admin/detailBlog/' . $id -> id);
+            Flasher::setFlash('FAILED', 'DATA UPDATE', 'danger');
+            header('Location: ' . BASEURL . 'Admin/blog');
             exit;
-
         }
     }
     

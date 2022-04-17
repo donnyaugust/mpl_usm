@@ -245,7 +245,7 @@ public function setCountBlog()
 
     public function getAllBlog() 
     {
-        $this -> db -> query('SELECT * FROM ' . $this -> tbl_blog . ' ORDER BY id ASC');
+        $this -> db -> query('SELECT * FROM ' . $this -> tbl_blog . ' ORDER BY date DESC');
         return $this -> db -> resultSetObj();
     }
 
@@ -266,7 +266,7 @@ public function setCountBlog()
             $author   = filter_input(INPUT_POST, 'author', FILTER_SANITIZE_STRING);
 
             $ex = explode(" ", $title);
-            $id = $ex[0] . "-" . $ex[1] . "-" . $ex[2] . $date;
+            $id = $date . "_" . $ex[0] . "_" . $ex[1] . "_" . $ex[2];
         
             $this -> db -> query('INSERT INTO ' . $this -> tbl_blog . ' (id, title, text, date, author) VALUES (:id, :title, :text, :date, :author)');
                 
@@ -278,11 +278,21 @@ public function setCountBlog()
         
             $this -> db -> execute();
 
-            $this -> db -> query('SELECT * FROM ' . $this -> tbl_blog .' WHERE id=:id');
-            $this -> db -> bind('id', $id);
-            return $this -> db -> resultSetObj();
-        } else {
-            return false;
+            return $this -> db -> forCount();
+        }
+    }
+
+    public function insertBlgId()
+    {
+        if(isset($_POST['submit'])) {
+    
+            $title    = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
+            $date     = filter_input(INPUT_POST, 'date', FILTER_SANITIZE_STRING);
+
+            $ex = explode(" ", $title);
+            $id = $date . "_" . $ex[0] . "_" . $ex[1] . "_" . $ex[2];
+            
+            return $id;
         }
     }
 

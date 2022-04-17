@@ -2,7 +2,7 @@
 
 <div class="container mt-4 mb-4">
     <h1><b>Blog</b></h1>
-    <h5><b>New Blog</b></h5>
+    <center><h4><b>New Blog</b></h4></center>
     <hr>
     <div class="col-10 mx-auto">
     <form action="<?= BASEURL; ?>Admin/insBlog" method="POST">

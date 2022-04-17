@@ -41,7 +41,7 @@
             <tbody class="text-light">
                 <tr>
                 <td class="text-center"><?= $no++ ?></td>
-                <td><?= $blog -> date ?></td>
+                <td class="text-center"><?= $blog -> date ?></td>
                 <td><?= $blog -> title ?></td>
                 <td><?= $blog -> author ?></td>
                 <td><center><a href="<?= BASEURL; ?>Admin/detailBlog/<?= $blog -> id ?>" class="badge badge-pill bg-light text-dark">Detail</a></center>
