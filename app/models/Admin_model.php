@@ -265,16 +265,21 @@ public function setCountBlog()
             $date     = filter_input(INPUT_POST, 'date', FILTER_SANITIZE_STRING);
             $author   = filter_input(INPUT_POST, 'author', FILTER_SANITIZE_STRING);
 
-            $ex = explode(" ", $title);
-            $id = $date . "_" . $ex[0] . "_" . $ex[1] . "_" . $ex[2];
+            $ex  = explode(" ", $title);
+            $id  = $date . "_" . $ex[0] . "_" . $ex[1] . "_" . $ex[2];
+            $pic = "empty.png";
         
-            $this -> db -> query('INSERT INTO ' . $this -> tbl_blog . ' (id, title, text, date, author) VALUES (:id, :title, :text, :date, :author)');
+            $this -> db -> query('INSERT INTO ' . $this -> tbl_blog . ' (id, title, text, date, author, pic1, pic2, pic3, pic4) VALUES (:id, :title, :text, :date, :author, :pic1, :pic2, :pic3, :pic4)');
                 
             $this -> db -> bind('id', $id);
             $this -> db -> bind('title', $title);
             $this -> db -> bind('text', $text);
             $this -> db -> bind('date', $date);
             $this -> db -> bind('author', $author);
+            $this -> db -> bind('pic1', $pic);
+            $this -> db -> bind('pic2', $pic);
+            $this -> db -> bind('pic3', $pic);
+            $this -> db -> bind('pic4', $pic);
         
             $this -> db -> execute();
 
@@ -294,6 +299,16 @@ public function setCountBlog()
             
             return $id;
         }
+    }
+
+    public function deleteBlg($id) 
+    {
+        $this -> db -> query('DELETE FROM ' . $this -> tbl_blog . ' WHERE id=:id');
+        $this -> db -> bind('id', $id);
+
+        $this -> db -> execute();
+
+        return $this -> db -> forCount();
     }
 
 /* End Model */

@@ -201,6 +201,19 @@ class Admin extends Controller {
             exit;
         }
     }
+
+    public function delBlog($id)
+    {
+        if( $this -> model('Admin_model') -> deleteBlg($id) > 0 ) {
+            Flasher::setFlash('SUCCESS', 'DELETE', 'danger');
+            header('Location: ' . BASEURL . 'Admin/blog');
+            exit;
+        } else {
+            Flasher::setFlash('FAILED', 'DELETE', 'danger');
+            header('Location: ' . BASEURL . 'Admin/blog');
+            exit;
+        }
+    }
     
 /* End Controllers */
 

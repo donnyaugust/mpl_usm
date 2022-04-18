@@ -10,28 +10,28 @@
         <?php foreach( $data['table'] as $blog) : ?>
         
         <h4><b><?= $blog -> title ?></b></h4>
-        <p><b><?= $blog -> author ?></b></p>
+        <p><b>Author : <?= $blog -> author ?></b></p>
         <p><?= $blog -> date ?></p>
         <hr class="my-4">
         <p><?= $blog -> text ?></p>
 
         <div class="row">
             <div class="col-3">
-                <img src="<?= BASEURL; ?>img/cal_1.JPEG" alt="<?= $blog -> title ?>" class="img-fluid mx-auto d-block mt-3" width="200">
+                <img src="<?= BASEURL; ?>img/<?= $blog -> pic1 ?>" alt="<?= $blog -> title ?>" class="img-fluid mx-auto d-block mt-3" width="200">
             </div>
             <div class="col-3">
-                <img src="<?= BASEURL; ?>img/cal_1.JPEG" alt="<?= $blog -> title ?>" class="img-fluid mx-auto d-block mt-3" width="200">
+                <img src="<?= BASEURL; ?>img/<?= $blog -> pic2 ?>" alt="<?= $blog -> title ?>" class="img-fluid mx-auto d-block mt-3" width="200">
             </div>
             <div class="col-3">
-                <img src="<?= BASEURL; ?>img/cal_1.JPEG" alt="<?= $blog -> title ?>" class="img-fluid mx-auto d-block mt-3" width="200">
+                <img src="<?= BASEURL; ?>img/<?= $blog -> pic3 ?>" alt="<?= $blog -> title ?>" class="img-fluid mx-auto d-block mt-3" width="200">
             </div>
             <div class="col-3">
-                <img src="<?= BASEURL; ?>img/cal_1.JPEG" alt="<?= $blog -> title ?>" class="img-fluid mx-auto d-block mt-3" width="200">
+                <img src="<?= BASEURL; ?>img/<?= $blog -> pic4 ?>" alt="<?= $blog -> title ?>" class="img-fluid mx-auto d-block mt-3" width="200">
             </div>
         </div>
         <hr class="my-4">
         <a class='btn btn-sm btn-dark mt-4' style='color: #fd6701;' href="<?= BASEURL; ?>Admin/blog"><b>Back</b></a>
-        <a class='btn btn-sm mt-4 text-dark' style='background: #fd6701;' href="<?= BASEURL; ?>Admin/delMember/<?= $blog -> id ?>" onclick="return confirm('Are you sure DELETE Data ?')"><b>Delete</b></a>
+        <a class='btn btn-sm mt-4 text-dark' style='background: #fd6701;' href="<?= BASEURL; ?>Admin/delBlog/<?= $blog -> id ?>" onclick="return confirm('Are you sure DELETE Data ?')"><b>Delete</b></a>
         <a class='btn btn-sm mt-4 text-dark' style='background: #fd6701;' href="<?= BASEURL; ?>Admin/upFormMember/<?= $blog -> id ?>"><b>Update</b></a>
 
         <?php endforeach; ?>

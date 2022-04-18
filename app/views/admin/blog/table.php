@@ -2,30 +2,28 @@
 
 <div class="container mt-4">
     
-        <h1><b>Blog</b></h1>
-        <?php $count = $data['count']; ?>
-        <p><b>Total Record : <?= $count ?> &emsp;</b></p>
+    <h1><b>Blog</b></h1>
+    <?php $count = $data['count']; ?>
+    <p><b>Total Record : <?= $count ?> &emsp;</b></p>
+    
+    <table>
+        <tr>
+        <th>
+        <form class="form-inline" action="<?= BASEURL; ?>Admin/searchBlog" method="POST">
+            <input type="text" class="form-control form-control-sm" name="search" placeholder="search">
+        </th>
+        <th>
+            <button type="submit" value="search" class="btn btn-sm btn-dark"><b>Search</b></button>
+        </form>
+            <a class="btn btn-sm btn-dark" href="<?= BASEURL; ?>Admin/insBlogForm"><b>New</b></a>
+        </th>
+        </tr>
+    </table>
         
-        <table>
-            <tr>
-            <th>
-            <form class="form-inline" action="<?= BASEURL; ?>Admin/searchBlog" method="POST">
-                <input type="text" class="form-control form-control-sm" name="search" placeholder="search">
-            </th>
-            <th>
-                <button type="submit" value="search" class="btn btn-sm btn-dark"><b>Search</b></button>
-            </form>
-                <a class="btn btn-sm btn-dark" href="<?= BASEURL; ?>Admin/insBlogForm"><b>New</b></a>
-            </th>
-            </tr>
-        </table>
-        
-        <div class="container mt-3">
-            <?php Flasher::flash(); ?>
-        </div>
+    <br>
+    <?php Flasher::flash(); ?>
 
     <div class="table-responsive">
-        
         <table class="table table-sm table-bordered bg-dark">
             <thead class="thead-light text-dark">
             <tr>
@@ -36,8 +34,7 @@
             <th></th>
             </tr>
             </thead>
-            <?php $no = 1; 
-            foreach( $data['table'] as $blog) : ?>
+            <?php $no = 1; foreach( $data['table'] as $blog) : ?>
             <tbody class="text-light">
                 <tr>
                 <td class="text-center"><?= $no++ ?></td>
